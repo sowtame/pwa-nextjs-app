@@ -3,7 +3,7 @@ import type { MetadataRoute } from 'next'
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: 'Next.js PWA',
-    short_name: 'NextPWA',
+    short_name: 'PWA DEV',
     description: 'A Progressive Web App built with Next.js',
     start_url: '/',
     display: 'standalone',
@@ -11,12 +11,12 @@ export default function manifest(): MetadataRoute.Manifest {
     theme_color: '#000000',
     icons: [
       {
-        src: 'https://alfabank.servicecdn.ru/icons/click/icon_192x192.png',
+        src: 'https://web.alfabank.ru/mobile/s3/static/newclick/LogoPWA_192_192.png',
         sizes: '192x192',
         type: 'image/png',
       },
       {
-        src: 'https://alfabank.servicecdn.ru/icons/click/icon_512x512.png',
+        src: 'https://web.alfabank.ru/mobile/s3/static/newclick/LogoPWA_512_512.png',
         sizes: '512x512',
         type: 'image/png',
       },
