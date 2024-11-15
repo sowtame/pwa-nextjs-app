@@ -14,6 +14,8 @@
   padding: 80px;
   gap: 64px;
   font-family: var(--font-geist-sans);
+
+  height: 200vh;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -68,10 +70,7 @@
   padding: 0 20px;
   border: none;
   border: 1px solid transparent;
-  transition:
-    background 0.2s,
-    color 0.2s,
-    border-color 0.2s;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -165,4 +164,24 @@ a.secondary {
   .logo {
     filter: invert();
   }
+}
+
+.navBar {
+  bottom: 0;
+  left: 0;
+  opacity: 0.85;
+  position: fixed;
+  right: 0;
+  top: 0;
+
+  backdrop-filter: blur(32px);
+
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #1a1a1a;
+
+  z-index: 10000;
 }
