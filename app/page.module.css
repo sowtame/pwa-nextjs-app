@@ -84,6 +84,8 @@ a.primary {
   background: var(--foreground);
   color: var(--background);
   gap: 8px;
+
+  margin: 10px;
 }
 
 a.secondary {
@@ -172,7 +174,7 @@ a.secondary {
   opacity: 0.85;
   position: fixed;
   right: 0;
-  top: 0;
+  top: -64px;
 
   backdrop-filter: blur(32px);
 
