@@ -26,6 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"></meta>
+      <meta name="apple-mobile-web-app-capable" content="true" />
       <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"></meta>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>{children}</body>
     </html>

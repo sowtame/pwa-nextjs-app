@@ -173,8 +173,6 @@ a.secondary {
   opacity: 0.85;
   position: fixed;
   right: 0;
-  top: -64px;
-
   backdrop-filter: blur(32px);
 
   height: 64px;
