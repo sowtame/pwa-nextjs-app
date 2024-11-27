@@ -15,6 +15,7 @@ export default function Home() {
           </li>
           <li>Save and see your changes instantly.</li>
         </ol>
+        <a href="https://private.stepantest.ru/">private.stepantest</a>
 
         <div className={styles.ctas}>
           <div style={{ display: 'flex' }}>
