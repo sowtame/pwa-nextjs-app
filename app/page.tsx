@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import styles from './page.module.css'
 import { SetupWorker } from '../components/setup-worker'
+import Link from 'next/link'
 
 export default function Home() {
   return (
@@ -46,6 +47,8 @@ export default function Home() {
           >
             Read our docs
           </a>
+
+          <Link href={'/refresh'}> refresh</Link>
         </div>
       </main>
       <footer className={styles.footer}>
