@@ -4,7 +4,6 @@ import { usePullToRefresh } from './test'
 import styles from './page.module.css'
 
 import { Loader } from './svg'
-import { useEffect, useRef } from 'react'
 
 const MAXIMUM_PULL_LENGTH = 240
 type Props = {
@@ -12,8 +11,6 @@ type Props = {
 }
 
 export function PageRefresh({ children }: Props) {
-  // const ref = useRef(null)
-
   const { isRefreshing, pullPosition, ref } = usePullToRefresh({
     // you can choose what behavior for `onRefresh`, could be calling an API to load more data, or refresh whole page.
     onRefresh: () => {
@@ -23,10 +20,6 @@ export function PageRefresh({ children }: Props) {
     refreshThreshold: 150,
     isDisabled: false,
   })
-
-  useEffect(() => {
-    document.body.style.overflow = 'hidden'
-  }, [])
 
   return (
     <div ref={ref}>

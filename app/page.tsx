@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import styles from './page.module.css'
-import { BottomSheet } from '@alfalab/core-components/bottom-sheet'
+// import { BottomSheet } from '@alfalab/core-components/bottom-sheet'
 import { SetupWorker } from '../components/setup-worker'
 import Link from 'next/link'
 
@@ -41,9 +41,9 @@ export default function Home() {
             Refresh page
           </Link>
         </div>
-        <BottomSheet hideOverlay={true} open={true} onClose={() => {}}>
+        {/* <BottomSheet hideOverlay={true} open={true} onClose={() => {}}>
           <div style={{ height: '430px' }}></div>
-        </BottomSheet>
+        </BottomSheet> */}
       </main>
       <footer className={styles.footer}>
         <a

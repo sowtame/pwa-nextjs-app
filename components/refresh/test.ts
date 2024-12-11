@@ -1,4 +1,4 @@
-import { RefObject, useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 export const DEFAULT_MAXIMUM_PULL_LENGTH = 240
 export const DEFAULT_REFRESH_THRESHOLD = 180
