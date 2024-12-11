@@ -1,46 +1,52 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
-import { usePullToRefresh } from './test'
-import styles from './page.module.css'
+import Image from 'next/image'
+import styles from '../page.module.css'
+import { SetupWorker } from '../../components/setup-worker'
+import Link from 'next/link'
 
-import { Loader } from './svg'
-
-const MAXIMUM_PULL_LENGTH = 240
-
-export default function PageRefresh() {
-  const { refresh } = useRouter()
-
-  const { isRefreshing, pullPosition } = usePullToRefresh({
-    // you can choose what behavior for `onRefresh`, could be calling an API to load more data, or refresh whole page.
-    onRefresh: () => {
-      console.log(1)
-      window.location.reload()
-    },
-    maximumPullLength: MAXIMUM_PULL_LENGTH,
-    refreshThreshold: 50,
-    isDisabled: false,
-  })
-
+export default function Refresh() {
   return (
-    <div>
-      <div
-        style={{
-          // top: (isRefreshing ? REFRESH_THRESHOLD : pullPosition) / 3,
-          opacity: isRefreshing || pullPosition > 0 ? 1 : 0,
-          height: pullPosition / 3,
-        }}
-        className={styles.loaderWrapper}
-        // className="bg-base-100 fixed inset-x-1/2 z-30 h-8 w-8 -translate-x-1/2 rounded-full p-2 shadow"
-      >
-        <div
-          className={styles.loader}
-          // className={`h-full w-full ${isRefreshing ? 'animate-spin' : ''}`}
-          // style={!isRefreshing ? { transform: `rotate(${pullPosition}deg)` } : {}}
-        >
-          <Loader className={styles.loaderComponent} />
+    <div className={styles.page}>
+      <SetupWorker />
+      <div className={styles.navBar}>navbar</div>
+      <main className={styles.main}>
+        <Image className={styles.logo} src="/next.svg" alt="Next.js logo" width={180} height={38} priority />
+        <ol>
+          <li>
+            Get started by editing <code>app/page.tsx</code>.
+          </li>
+          <li>Save and see your changes instantly.</li>
+        </ol>
+        <a href="https://private.stepantest.ru/">private.stepantest</a>
+
+        <div className={styles.ctas}>
+          <div style={{ display: 'flex' }}>
+            <a
+              className={styles.primary}
+              href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Image className={styles.logo} src="/vercel.svg" alt="Vercel logomark" width={20} height={20} />
+              Deploy now
+            </a>
+            <a
+              className={styles.primary}
+              href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Image className={styles.logo} src="/vercel.svg" alt="Vercel logomark" width={20} height={20} />
+              Deploy now
+            </a>
+          </div>
+
+          <Link className={styles.secondary} href={'/'}>
+            Home page
+          </Link>
         </div>
-      </div>
+      </main>
     </div>
   )
 }

@@ -1,5 +1,8 @@
+'use client'
+
 import Image from 'next/image'
 import styles from './page.module.css'
+import { BottomSheet } from '@alfalab/core-components/bottom-sheet'
 import { SetupWorker } from '../components/setup-worker'
 import Link from 'next/link'
 
@@ -10,12 +13,6 @@ export default function Home() {
       <div className={styles.navBar}>navbar</div>
       <main className={styles.main}>
         <Image className={styles.logo} src="/next.svg" alt="Next.js logo" width={180} height={38} priority />
-        <ol>
-          <li>
-            Get started by editing <code>app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
         <a href="https://private.stepantest.ru/">private.stepantest</a>
 
         <div className={styles.ctas}>
@@ -39,17 +36,14 @@ export default function Home() {
               Deploy now
             </a>
           </div>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
 
-          <Link href={'/refresh'}> refresh</Link>
+          <Link className={styles.secondary} href={'/refresh'}>
+            Refresh page
+          </Link>
         </div>
+        <BottomSheet hideOverlay={true} open={true} onClose={() => {}}>
+          <div style={{ height: '430px' }}></div>
+        </BottomSheet>
       </main>
       <footer className={styles.footer}>
         <a

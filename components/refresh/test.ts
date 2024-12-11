@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { RefObject, useCallback, useEffect, useRef, useState } from 'react'
 
 export const DEFAULT_MAXIMUM_PULL_LENGTH = 240
 export const DEFAULT_REFRESH_THRESHOLD = 180
@@ -14,6 +14,8 @@ export type UsePullToRefreshParams = {
 export type UsePullToRefreshReturn = {
   isRefreshing: boolean
   pullPosition: number
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  ref: any
 }
 export type UsePullToRefresh = (params: UsePullToRefreshParams) => UsePullToRefreshReturn
 
@@ -28,6 +30,8 @@ export const usePullToRefresh: UsePullToRefresh = ({
   const [pullStartPosition, setPullStartPosition] = useState(0)
   const [pullPosition, setPullPosition] = useState(0)
   const [isRefreshing, setIsRefreshing] = useState(false)
+
+  const ref = useRef<HTMLElement>(null)
 
   const onPullStart = useCallback(
     ({ targetTouches }: TouchEvent) => {
@@ -51,7 +55,7 @@ export const usePullToRefresh: UsePullToRefresh = ({
       const currentPullLength = pullStartPosition < touch.screenY ? Math.abs(touch.screenY - pullStartPosition) : 0
       console.log('🚀 ~ pullStartPosition:', pullStartPosition)
 
-      if (currentPullLength <= maximumPullLength && pullStartPosition < window.screen.height / 3) setPullPosition(() => currentPullLength)
+      if (currentPullLength <= maximumPullLength && pullStartPosition < window.screen.height) setPullPosition(() => currentPullLength)
     },
     [isDisabled, maximumPullLength, pullStartPosition]
   )
@@ -75,7 +79,9 @@ export const usePullToRefresh: UsePullToRefresh = ({
   }, [isDisabled, onRefresh, pullPosition, refreshThreshold])
 
   useEffect(() => {
-    if (typeof window === 'undefined' || isDisabled) return
+    if (isDisabled) {
+      return
+    }
 
     const ac = new AbortController()
     const options = {
@@ -83,12 +89,17 @@ export const usePullToRefresh: UsePullToRefresh = ({
       signal: ac.signal,
     }
 
-    window.addEventListener('touchstart', onPullStart, options)
-    window.addEventListener('touchmove', onPulling, options)
-    window.addEventListener('touchend', onEndPull, options)
+    console.log(ref)
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const element = (ref.current as any) || window
+
+    element.addEventListener('touchstart', onPullStart, options)
+    element.addEventListener('touchmove', onPulling, options)
+    element.addEventListener('touchend', onEndPull, options)
 
     return () => void ac.abort()
-  }, [isDisabled, onEndPull, onPullStart, onPulling])
+  }, [isDisabled, onEndPull, onPullStart, onPulling, ref.current])
 
   useEffect(() => {
     if (isValid(maximumPullLength, refreshThreshold) || process.env.NODE_ENV === 'production' || isDisabled) return
@@ -98,5 +109,5 @@ export const usePullToRefresh: UsePullToRefresh = ({
     )
   }, [maximumPullLength, refreshThreshold, isDisabled])
 
-  return { isRefreshing, pullPosition }
+  return { isRefreshing, pullPosition, ref }
 }

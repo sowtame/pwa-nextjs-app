@@ -9,5 +9,6 @@
   align-items: center;
 }
 .loaderWrapper {
+  padding-top: env(safe-area-inset-bottom, 0);
   /* position: fixed; */
 }
