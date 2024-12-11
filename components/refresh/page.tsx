@@ -16,7 +16,7 @@ export function PageRefresh({ children }: Props) {
     onRefresh: () => {
       window.location.reload()
     },
-    maximumPullLength: MAXIMUM_PULL_LENGTH,
+    maximumPullLength: 340,
     refreshThreshold: 150,
     isDisabled: false,
   })
@@ -32,7 +32,7 @@ export function PageRefresh({ children }: Props) {
         className={styles.loaderWrapper}
         // className="bg-base-100 fixed inset-x-1/2 z-30 h-8 w-8 -translate-x-1/2 rounded-full p-2 shadow"
       >
-        <Loader pullPosition={pullPosition} className={styles.loaderComponent} />
+        <Loader pullPosition={pullPosition / 3} className={styles.loaderComponent} isRefreshing={isRefreshing} />
       </div>
       {children}
     </div>

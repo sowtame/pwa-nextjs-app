@@ -4,6 +4,7 @@
 }
 .loaderComponent {
   width: 100vw;
+  transform: rotate(180deg);
 
   display: flex;
   align-items: center;

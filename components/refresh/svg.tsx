@@ -1,11 +1,53 @@
-const getRowLineStyle = ({ deg }) => {
+import { useMemo } from 'react'
+
+const allLines = [
+  {
+    deg: 0,
+  },
+  {
+    deg: 45,
+  },
+  {
+    deg: 90,
+  },
+  {
+    deg: 135,
+  },
+  {
+    deg: 180,
+  },
+  {
+    deg: 220,
+  },
+  {
+    deg: 270,
+  },
+  {
+    deg: 315,
+  },
+]
+
+const getRowLineStyle = ({ deg, opacity }) => {
   return {
-    opacity: 1,
+    opacity: opacity >= 1 ? 1 : opacity,
     transform: `rotate(${deg}deg)`,
   }
 }
 
-export const Loader = ({ className, pullPosition }) => {
+export const Loader = ({ className, pullPosition, isRefreshing }) => {
+  console.log('🚀 h:', pullPosition)
+  const opacityComputed = pullPosition / 2.5 / 10
+  console.log('🚀 ~ Loader ~ pullPosition1:', opacityComputed)
+  const lines = useMemo(() => {
+    return allLines.map(({ deg }, index) => {
+      return {
+        deg,
+        opacity: Math.min(1, Math.max(0, opacityComputed - index * 0.36)),
+        // opacity: opacityComputed - index * 0.36,
+      }
+    })
+  }, [opacityComputed])
+
   return (
     <svg
       focusable="false"
@@ -19,7 +61,14 @@ export const Loader = ({ className, pullPosition }) => {
       className={className}
     >
       <g transform="translate(17.5 17.5)">
-        <g strokeLinecap="round">
+        {lines.map(({ deg, opacity }) => {
+          return (
+            <g strokeLinecap="round" key={deg}>
+              <line y1="7" y2="13" style={getRowLineStyle({ deg, opacity: isRefreshing ? 1 : opacity })}></line>
+            </g>
+          )
+        })}
+        {/* <g strokeLinecap="round">
           <line y1="7" y2="13" style={getRowLineStyle({ deg: 0 })}></line>
         </g>
         <g strokeLinecap="round">
@@ -42,7 +91,7 @@ export const Loader = ({ className, pullPosition }) => {
         </g>
         <g strokeLinecap="round">
           <line y1="7" y2="13" style={getRowLineStyle({ deg: 315 })}></line>
-        </g>
+        </g> */}
         {/* <g strokeLinecap="round" style="--t-opacity: 0; --t-rotate: 0deg;">
           <line y1="7" y2="13"></line>
         </g>

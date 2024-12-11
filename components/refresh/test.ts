@@ -53,7 +53,6 @@ export const usePullToRefresh: UsePullToRefresh = ({
       if (!touch) return
 
       const currentPullLength = pullStartPosition < touch.screenY ? Math.abs(touch.screenY - pullStartPosition) : 0
-      console.log('🚀 ~ pullStartPosition:', pullStartPosition)
 
       if (currentPullLength <= maximumPullLength && pullStartPosition < window.screen.height) setPullPosition(() => currentPullLength)
     },
@@ -88,8 +87,6 @@ export const usePullToRefresh: UsePullToRefresh = ({
       passive: true,
       signal: ac.signal,
     }
-
-    console.log(ref)
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const element = (ref.current as any) || window
