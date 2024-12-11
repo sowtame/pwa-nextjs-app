@@ -13,3 +13,69 @@
   padding-top: env(safe-area-inset-bottom, 0);
   /* position: fixed; */
 }
+
+@keyframes rotateAnimation {
+  0% {
+    opacity: 1;
+    transform: rotate(180deg);
+  }
+
+  50% {
+    opacity: 0.7;
+  }
+
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+.reloading {
+  transform: rotate(1turn);
+
+  animation: rotateAnimation 2s cubic-bezier(0.4, 0.1, 0.2, 1);
+}
+
+@keyframes opacityAnimation {
+  0% {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0.4;
+  }
+}
+
+.lineReloading {
+  animation: opacityAnimation 1s linear infinite;
+}
+.lineReloading:first-child {
+  animation-delay: 0s;
+}
+
+.lineReloading:nth-child(2) {
+  animation-delay: 0.14s;
+}
+
+.lineReloading:nth-child(3) {
+  animation-delay: 0.28s;
+}
+
+.lineReloading:nth-child(4) {
+  animation-delay: 0.42s;
+}
+
+.lineReloading:nth-child(5) {
+  animation-delay: 0.56s;
+}
+
+.lineReloading:nth-child(6) {
+  animation-delay: 0.7s;
+}
+
+.lineReloading:nth-child(7) {
+  animation-delay: 0.84s;
+}
+
+.lineReloading:nth-child(8) {
+  animation-delay: 0.98s;
+}

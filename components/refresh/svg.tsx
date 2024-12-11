@@ -1,4 +1,6 @@
 import { useMemo } from 'react'
+import cn from 'classnames'
+import styles from './page.module.css'
 
 const allLines = [
   {
@@ -36,14 +38,13 @@ const getRowLineStyle = ({ deg, opacity }) => {
 
 export const Loader = ({ className, pullPosition, isRefreshing }) => {
   console.log('🚀 h:', pullPosition)
-  const opacityComputed = pullPosition / 2.5 / 10
+  const opacityComputed = pullPosition / 2 / 10
   console.log('🚀 ~ Loader ~ pullPosition1:', opacityComputed)
   const lines = useMemo(() => {
     return allLines.map(({ deg }, index) => {
       return {
         deg,
         opacity: Math.min(1, Math.max(0, opacityComputed - index * 0.36)),
-        // opacity: opacityComputed - index * 0.36,
       }
     })
   }, [opacityComputed])
@@ -58,13 +59,20 @@ export const Loader = ({ className, pullPosition, isRefreshing }) => {
       fill="none"
       stroke="#676567"
       strokeWidth="3.5"
-      className={className}
+      className={cn(className, {
+        [styles.reloading]: isRefreshing,
+      })}
     >
       <g transform="translate(17.5 17.5)">
         {lines.map(({ deg, opacity }) => {
           return (
             <g strokeLinecap="round" key={deg}>
-              <line y1="7" y2="13" style={getRowLineStyle({ deg, opacity: isRefreshing ? 1 : opacity })}></line>
+              <line
+                y1="7"
+                y2="13"
+                className={cn({ [styles.lineReloading]: isRefreshing })}
+                style={getRowLineStyle({ deg, opacity: isRefreshing ? 1 : opacity })}
+              ></line>
             </g>
           )
         })}
