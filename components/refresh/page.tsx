@@ -1,12 +1,12 @@
 'use client'
 
-import { usePullToRefresh } from './test'
+import { usePullToRefresh } from './use-pull-to-refresh'
 import styles from './page.module.css'
 
 import { Loader } from './svg'
 
 const MAXIMUM_PULL_LENGTH = 240
-const REFRESH_THRESHOLD = 180
+// const REFRESH_THRESHOLD = 180
 
 type Props = {
   children: React.ReactNode

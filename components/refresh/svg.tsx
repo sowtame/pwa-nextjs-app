@@ -2,6 +2,11 @@ import { useMemo } from 'react'
 import cn from 'classnames'
 import styles from './page.module.css'
 
+type LineT = {
+  deg: number
+  opacity: number
+}
+
 const allLines = [
   {
     deg: 0,
@@ -29,15 +34,20 @@ const allLines = [
   },
 ]
 
-const getRowLineStyle = ({ deg, opacity }) => {
+const getRowLineStyle = ({ deg, opacity }: LineT) => {
   return {
     opacity: opacity >= 1 ? 1 : opacity,
     transform: `rotate(${deg}deg)`,
   }
 }
 
-export const Loader = ({ className, pullPosition, isRefreshing }) => {
-  console.log('🚀 h:', pullPosition)
+type Props = {
+  className: string
+  pullPosition: number
+  isRefreshing: boolean
+}
+
+export const Loader = ({ className, pullPosition, isRefreshing }: Props) => {
   const opacityComputed = pullPosition / 2 / 10
   console.log('🚀 ~ Loader ~ pullPosition1:', opacityComputed)
   const lines = useMemo(() => {
@@ -76,54 +86,6 @@ export const Loader = ({ className, pullPosition, isRefreshing }) => {
             </g>
           )
         })}
-        {/* <g strokeLinecap="round">
-          <line y1="7" y2="13" style={getRowLineStyle({ deg: 0 })}></line>
-        </g>
-        <g strokeLinecap="round">
-          <line y1="7" y2="13" style={getRowLineStyle({ deg: 45 })}></line>
-        </g>
-        <g strokeLinecap="round">
-          <line y1="7" y2="13" style={getRowLineStyle({ deg: 90 })}></line>
-        </g>
-        <g strokeLinecap="round">
-          <line y1="7" y2="13" style={getRowLineStyle({ deg: 135 })}></line>
-        </g>
-        <g strokeLinecap="round">
-          <line y1="7" y2="13" style={getRowLineStyle({ deg: 180 })}></line>
-        </g>
-        <g strokeLinecap="round">
-          <line y1="7" y2="13" style={getRowLineStyle({ deg: 225 })}></line>
-        </g>
-        <g strokeLinecap="round">
-          <line y1="7" y2="13" style={getRowLineStyle({ deg: 270 })}></line>
-        </g>
-        <g strokeLinecap="round">
-          <line y1="7" y2="13" style={getRowLineStyle({ deg: 315 })}></line>
-        </g> */}
-        {/* <g strokeLinecap="round" style="--t-opacity: 0; --t-rotate: 0deg;">
-          <line y1="7" y2="13"></line>
-        </g>
-        <g strokeLinecap="round" style="--t-opacity: 0; --t-rotate: 45deg;">
-          <line y1="7" y2="13"></line>
-        </g>
-        <g strokeLinecap="round" style="--t-opacity: 0; --t-rotate: 90deg;">
-          <line y1="7" y2="13"></line>
-        </g>
-        <g strokeLinecap="round" style="--t-opacity: 0; --t-rotate: 135deg;">
-          <line y1="7" y2="13"></line>
-        </g>
-        <g strokeLinecap="round" style="--t-opacity: 0; --t-rotate: 180deg;">
-          <line y1="7" y2="13"></line>
-        </g>
-        <g strokeLinecap="round" style="--t-opacity: 0; --t-rotate: 225deg;">
-          <line y1="7" y2="13"></line>
-        </g>
-        <g strokeLinecap="round" style="--t-opacity:0;--t-rotate:270deg">
-          <line y1="7" y2="13"></line>
-        </g>
-        <g strokeLinecap="round" style="--t-opacity:0;--t-rotate:315deg">
-          <line y1="7" y2="13"></line>
-        </g> */}
       </g>
     </svg>
   )

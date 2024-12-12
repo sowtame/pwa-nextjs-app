@@ -54,13 +54,17 @@ export const usePullToRefresh: UsePullToRefresh = ({
 
       const currentPullLength = pullStartPosition < touch.screenY ? Math.abs(touch.screenY - pullStartPosition) : 0
 
-      if (currentPullLength <= maximumPullLength && pullStartPosition < window.screen.height) setPullPosition(() => currentPullLength)
+      if (currentPullLength <= maximumPullLength && pullStartPosition < window.screen.height) {
+        setPullPosition(() => currentPullLength)
+      }
     },
     [isDisabled, maximumPullLength, pullStartPosition]
   )
 
   const onEndPull = useCallback(() => {
-    if (isDisabled) return
+    if (isDisabled) {
+      return
+    }
 
     setPullStartPosition(0)
     setPullPosition(0)
@@ -96,7 +100,7 @@ export const usePullToRefresh: UsePullToRefresh = ({
     element.addEventListener('touchend', onEndPull, options)
 
     return () => void ac.abort()
-  }, [isDisabled, onEndPull, onPullStart, onPulling, ref.current])
+  }, [isDisabled, onEndPull, onPullStart, onPulling])
 
   useEffect(() => {
     if (isValid(maximumPullLength, refreshThreshold) || process.env.NODE_ENV === 'production' || isDisabled) return
