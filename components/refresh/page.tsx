@@ -32,7 +32,7 @@ export function PageRefresh({ children }: Props) {
         style={{
           opacity: isRefreshing || pullPosition > 0 ? 1 : 0,
           height,
-          // transition: 'height 0.35s ease-in-out',
+          transition: isRefreshing ? 'height 0.35s ease-in-out' : '',
         }}
         className={styles.loaderWrapper}
       >
