@@ -10,14 +10,15 @@ import styles from '../page.module.css';
 
 export default function PageWithSidePanel() {
   return (
-    <div>
-      <PortalContext.Provider value={() => document.querySelector('#portal')}>
+    <PortalContext.Provider value={() => document.querySelector('#portal')}>
+      <div className={styles.pagePadding}>
         <SidePanel />
-      </PortalContext.Provider>
-      <Gap size="m" />
-      <Link className={styles.secondary} href={'/'}>
-        Home page
-      </Link>
-    </div>
+
+        <Gap size="m" />
+        <Link className={styles.secondary} href={'/'}>
+          Home page
+        </Link>
+      </div>
+    </PortalContext.Provider>
   );
 }

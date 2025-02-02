@@ -185,3 +185,7 @@ a.secondary {
 
   z-index: 10000;
 }
+
+.pagePadding {
+  padding: 16px;
+}
