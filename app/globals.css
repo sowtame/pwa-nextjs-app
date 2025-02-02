@@ -1,19 +1,27 @@
+@import '@alfalab/core-components/vars/bundle/click.css';
+@import '@alfalab/core-components/themes/click.css';
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+/* @media (prefers-color-scheme: dark) { */
+  /* :root { */
+    /* --background: #0a0a0a; */
+    /* --foreground: #ededed; */
+  /* } */
+/* } */
 
 html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+}
+
+html {
+  min-height: 100vh;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
 }
 
 body {
@@ -40,3 +48,7 @@ a {
     color-scheme: dark;
   }
 }
+
+div[class*="side-panel__sticky"] {
+    top: env(safe-area-inset-top, var(--gap-0));
+  }
