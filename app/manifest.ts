@@ -1,4 +1,4 @@
-import type { MetadataRoute } from 'next'
+import type { MetadataRoute } from 'next';
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
@@ -11,15 +11,15 @@ export default function manifest(): MetadataRoute.Manifest {
     theme_color: '#000000',
     icons: [
       {
-        src: 'https://alfabank.servicecdn.ru/icons/click/icon_192x192.png',
+        src: '/icon_192x192.png',
         sizes: '192x192',
         type: 'image/png',
       },
       {
-        src: 'https://alfabank.servicecdn.ru/icons/click/icon_512x512.png',
+        src: '/icon_512x512.png',
         sizes: '512x512',
         type: 'image/png',
       },
     ],
-  }
+  };
 }
