@@ -49,6 +49,6 @@ a {
   }
 }
 
-div[class*="side-panel__sticky"] {
-    top: env(safe-area-inset-top, var(--gap-0));
-  }
+/*div[class*="side-panel__sticky"] {*/
+/*    top: env(safe-area-inset-top, var(--gap-0));*/
+/*  }*/
