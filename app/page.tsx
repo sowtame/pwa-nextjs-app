@@ -25,6 +25,12 @@ export default function Home() {
             <Link className={styles.secondary} href={'/side-panel'}>
               Side Panel
             </Link>
+            <Link className={styles.secondary} href={'/modal'}>
+              Modal
+            </Link>
+            <Link className={styles.secondary} href={'/bottom-sheet'}>
+              Bottom Sheet
+            </Link>
             <Link className={styles.secondary} href={'/refresh'}>
               Refresh page
             </Link>
