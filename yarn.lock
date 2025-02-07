@@ -5,9 +5,9 @@ __metadata:
   version: 8
   cacheKey: 10c0
 
-"@alfalab/core-components@npm:^48.11.0":
-  version: 48.11.0
-  resolution: "@alfalab/core-components@npm:48.11.0"
+"@alfalab/core-components@npm:48.14.0":
+  version: 48.14.0
+  resolution: "@alfalab/core-components@npm:48.14.0"
   dependencies:
     "@alfalab/data": "npm:^1.9.1"
     "@alfalab/hooks": "npm:^1.13.1"
@@ -60,7 +60,7 @@ __metadata:
     "@alfalab/stack-context": ^1.16.0
     react: ">=16.8.0"
     react-dom: ">=16.8.0"
-  checksum: 10c0/cca51dd9889d1ef04b0a11303c53270b6d4d9f641999541473d682dde09b36461c81e4382e57ac0e2dabcd558e9f6b01d42b2e02e5f27a5cc4425b41edb9c8bd
+  checksum: 10c0/f894c1b1b97c1d393e0fd6dde4c43d6174ba7c593ff6e9b4b3f088aaf32255e56e8bb7739c6dde84a309bf07209478779dc773cb88f3ba50d5fd7bb17155fd69
   languageName: node
   linkType: hard
 
@@ -3429,7 +3429,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "pwa-nextjs-app@workspace:."
   dependencies:
-    "@alfalab/core-components": "npm:^48.11.0"
+    "@alfalab/core-components": "npm:48.14.0"
     "@alfalab/core-config": "npm:^1.0.0"
     "@alfalab/stack-context": "npm:^1.16.0"
     "@types/node": "npm:^20"

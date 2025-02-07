@@ -21,7 +21,13 @@ export default function Home() {
           priority
         />
         <div className={styles.ctas}>
-          <div style={{ display: 'flex' }}>
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+            }}
+          >
             <Link className={styles.secondary} href={'/side-panel'}>
               Side Panel
             </Link>
@@ -30,6 +36,9 @@ export default function Home() {
             </Link>
             <Link className={styles.secondary} href={'/bottom-sheet'}>
               Bottom Sheet
+            </Link>
+            <Link className={styles.secondary} href={'/calendar'}>
+              Calendar
             </Link>
             <Link className={styles.secondary} href={'/refresh'}>
               Refresh page
