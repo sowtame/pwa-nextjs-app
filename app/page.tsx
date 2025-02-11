@@ -5,8 +5,15 @@ import styles from './page.module.css'
 // import { BottomSheet } from '@alfalab/core-components/bottom-sheet'
 import { SetupWorker } from '../components/setup-worker'
 import Link from 'next/link'
+import { useEffect } from 'react'
 
 export default function Home() {
+  useEffect(() => {
+    navigator.serviceWorker
+      .register('/sw.js')
+      .then((registration) => console.log('Service Worker registration successful with scope: ', registration.scope))
+      .catch((err) => console.log('Service Worker registration failed: ', err))
+  }, [])
   return (
     <div className={styles.page}>
       <SetupWorker />

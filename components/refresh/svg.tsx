@@ -49,7 +49,6 @@ type Props = {
 
 export const Loader = ({ className, pullPosition, isRefreshing }: Props) => {
   const opacityComputed = pullPosition / 2 / 10
-  console.log('🚀 ~ Loader ~ pullPosition1:', opacityComputed)
   const lines = useMemo(() => {
     return allLines.map(({ deg }, index) => {
       return {

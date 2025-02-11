@@ -169,9 +169,9 @@ a.secondary {
 .navBar {
   bottom: 0;
   left: 0;
-  opacity: 0.85;
+  opacity: 0.95;
   position: fixed;
-  top: -64px;
+  top: 0;
 
   right: 0;
   backdrop-filter: blur(32px);
