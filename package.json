@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@alfalab/core-components": "48.14.0",
+    "@alfalab/core-components": "48.15.1-beta.0",
     "@alfalab/core-config": "^1.0.0",
     "@alfalab/stack-context": "^1.16.0",
     "classnames": "^2.5.1",
