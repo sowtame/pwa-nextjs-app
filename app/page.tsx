@@ -47,6 +47,9 @@ export default function Home() {
           <Link className={styles.secondary} href={'/refresh'}>
             Refresh page
           </Link>
+          <Link className={styles.secondary} href={'/login'}>
+            Login page
+          </Link>
         </div>
         {/* <BottomSheet hideOverlay={true} open={true} onClose={() => {}}>
           <div style={{ height: '430px' }}></div>
