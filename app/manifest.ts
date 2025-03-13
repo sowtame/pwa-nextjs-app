@@ -11,16 +11,10 @@ export default function manifest(): MetadataRoute.Manifest {
     theme_color: '#000000',
     icons: [
       {
-        src: 'https://alfaonline.servicecdn.ru/public/s3/static/newclick/pwa/icons/android/192_192.png',
+        src: './LogoPWA_192_192.png',
         sizes: '192x192',
         type: 'image/png',
-        purpose: 'any',
-      },
-      {
-        src: 'https://alfaonline.servicecdn.ru/public/s3/static/newclick/pwa/icons/android/512_512.png',
-        sizes: '512x512',
-        type: 'image/png',
-        purpose: 'any',
+        purpose: 'maskable',
       },
     ],
   }
