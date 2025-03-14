@@ -20,7 +20,6 @@ export default function manifest(): MetadataRoute.Manifest {
         src: 'https://alfaonline.servicecdn.ru/public/s3/static/newclick/pwa/icons/android/48_48.png',
         sizes: '48x48',
         type: 'image/png',
-        density: 1,
         purpose: 'maskable',
       },
       {
