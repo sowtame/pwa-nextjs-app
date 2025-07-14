@@ -1,0 +1,9 @@
+.container {
+    height: 100vh;
+}
+
+.tabBarCore {
+    position: fixed;
+    bottom: 0;
+    width: calc(100% - 32px);
+}
