@@ -28,6 +28,9 @@ export default function Home() {
               justifyContent: 'center',
             }}
           >
+            <Link href="/dummy.pdf" target="_blank" rel="noopener noreferrer">
+              Dummy PDF
+            </Link>
             <Link className={styles.secondary} href={'/side-panel'}>
               Side Panel
             </Link>
