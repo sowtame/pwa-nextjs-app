@@ -39,6 +39,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link
+          rel="apple-touch-startup-image"
+          href="https://alfaonline.servicecdn.ru/public/s3/static/newclick/pwa/splash-screens/1320x2868.png"
+        />
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <PageRefresh>{children}</PageRefresh>
       </body>
