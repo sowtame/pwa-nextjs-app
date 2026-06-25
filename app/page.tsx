@@ -40,6 +40,9 @@ export default function Home() {
             <Link className={styles.secondary} href={'/calendar'}>
               Calendar
             </Link>
+            <Link className={styles.secondary} href={'/tab-bar'}>
+              Tab Bar
+            </Link>
             <Link className={styles.secondary} href={'/refresh'}>
               Refresh page
             </Link>
