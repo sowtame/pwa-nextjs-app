@@ -2,6 +2,7 @@
   "name": "pwa-nextjs-app",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "yarn@4.17.0",
   "scripts": {
     "dev": "next dev --experimental-https",
     "build": "next build",
@@ -9,7 +10,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@alfalab/core-components": "48.15.1-beta.0",
+    "@alfalab/core-components": "^48.29.0",
     "@alfalab/core-config": "^1.0.0",
     "@alfalab/stack-context": "^1.16.0",
     "classnames": "^2.5.1",
