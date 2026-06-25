@@ -61,6 +61,12 @@
   gap: 16px;
 }
 
+.linkStack {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .ctas a {
   appearance: none;
   border-radius: 128px;
