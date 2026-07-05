@@ -105,9 +105,11 @@
 }
 
 .primaryBtn:disabled,
-.secondaryBtn:disabled {
+.secondaryBtn:disabled,
+.disabledLink {
   opacity: 0.5;
   cursor: default;
+  pointer-events: none;
 }
 
 .secondaryBtn {

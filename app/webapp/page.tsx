@@ -29,6 +29,8 @@ export default function WebAppSchemePage() {
   const [targetUrl, setTargetUrl] = useState('')
   const [status, setStatus] = useState<LaunchStatus>('idle')
   const [copied, setCopied] = useState(false)
+  const [shortcutName, setShortcutName] = useState('OpenPWA')
+  const [shortcutCopied, setShortcutCopied] = useState(false)
 
   useEffect(() => {
     // На iPhone страницу открывают по LAN-адресу (http://192.168.x.x:3000),
@@ -37,6 +39,11 @@ export default function WebAppSchemePage() {
   }, [])
 
   const webappUrl = useMemo(() => (targetUrl ? `webapp://${targetUrl}` : ''), [targetUrl])
+
+  const runShortcutUrl = useMemo(() => {
+    if (!webappUrl || !shortcutName) return ''
+    return `shortcuts://run-shortcut?name=${encodeURIComponent(shortcutName)}&input=text&text=${encodeURIComponent(webappUrl)}`
+  }, [webappUrl, shortcutName])
 
   const tryOpen = () => {
     setStatus('trying')
@@ -59,13 +66,13 @@ export default function WebAppSchemePage() {
     window.location.href = webappUrl
   }
 
-  const copy = async () => {
+  const copyText = async (text: string, setFlag: (v: boolean) => void) => {
     try {
-      await navigator.clipboard.writeText(webappUrl)
-      setCopied(true)
-      setTimeout(() => setCopied(false), 1500)
+      await navigator.clipboard.writeText(text)
+      setFlag(true)
+      setTimeout(() => setFlag(false), 1500)
     } catch {
-      window.prompt('Скопируйте вручную:', webappUrl)
+      window.prompt('Скопируйте вручную:', text)
     }
   }
 
@@ -111,7 +118,11 @@ export default function WebAppSchemePage() {
             <button className={styles.primaryBtn} onClick={tryOpen} disabled={!webappUrl}>
               Открыть webapp://
             </button>
-            <button className={styles.secondaryBtn} onClick={copy} disabled={!webappUrl}>
+            <button
+              className={styles.secondaryBtn}
+              onClick={() => copyText(webappUrl, setCopied)}
+              disabled={!webappUrl}
+            >
               {copied ? 'Скопировано ✓' : 'Скопировать для Shortcuts'}
             </button>
             <a className={styles.secondaryBtn} href="shortcuts://create-shortcut">
@@ -129,6 +140,52 @@ export default function WebAppSchemePage() {
               схема работает через Shortcuts (см. инструкцию ниже).
             </p>
           )}
+        </section>
+
+        <section className={styles.card}>
+          <h2 className={styles.subtitle}>Запуск из браузера через Shortcuts</h2>
+          <p className={styles.hint}>
+            Прямой переход по <code>webapp://</code> из Safari не работает, но можно открыть PWA цепочкой: ссылка{' '}
+            <code>shortcuts://run-shortcut</code> → команда в Shortcuts → <code>webapp://</code>. Команда с именем ниже
+            должна быть заранее создана на устройстве: блок «Получить входные данные» (Get Shortcut Input) → блок
+            «Открыть URL-адреса» (Open URLs).
+          </p>
+          <label className={styles.label} htmlFor="shortcut-name">
+            Имя команды в Shortcuts
+          </label>
+          <input
+            id="shortcut-name"
+            className={styles.input}
+            type="text"
+            value={shortcutName}
+            onChange={(e) => setShortcutName(e.target.value)}
+            placeholder="OpenPWA"
+            autoCapitalize="off"
+            autoCorrect="off"
+            spellCheck={false}
+          />
+          <div className={styles.row}>
+            <span className={styles.label}>Итоговая ссылка</span>
+            <code className={styles.value}>{runShortcutUrl || '…'}</code>
+          </div>
+          <div className={styles.actions}>
+            <a
+              className={runShortcutUrl ? styles.primaryBtn : `${styles.primaryBtn} ${styles.disabledLink}`}
+              href={runShortcutUrl || undefined}
+            >
+              Запустить через Shortcuts
+            </a>
+            <button
+              className={styles.secondaryBtn}
+              onClick={() => copyText(runShortcutUrl, setShortcutCopied)}
+              disabled={!runShortcutUrl}
+            >
+              {shortcutCopied ? 'Скопировано ✓' : 'Скопировать ссылку'}
+            </button>
+          </div>
+          <p className={styles.hint}>
+            Safari покажет диалог «Открыть в „Быстрые команды“?» — это обязательный шаг, молча перейти нельзя.
+          </p>
         </section>
 
         <section className={styles.card}>
