@@ -9,6 +9,12 @@ import { useEffect } from 'react'
 
 export default function Home() {
   useEffect(() => {
+    // navigator.serviceWorker есть только в secure context (HTTPS или localhost);
+    // при открытии по LAN-адресу http://192.168.x.x он undefined
+    if (!('serviceWorker' in navigator)) {
+      console.log('Service Worker unavailable: not a secure context (open via HTTPS or localhost)')
+      return
+    }
     navigator.serviceWorker
       .register('/sw.js')
       .then((registration) => console.log('Service Worker registration successful with scope: ', registration.scope))
@@ -49,6 +55,9 @@ export default function Home() {
           </Link>
           <Link className={styles.secondary} href={'/login'}>
             Login page
+          </Link>
+          <Link className={styles.secondary} href={'/webapp'}>
+            webapp:// launcher
           </Link>
         </div>
         {/* <BottomSheet hideOverlay={true} open={true} onClose={() => {}}>
