@@ -1,0 +1,79 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.fileCard {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  border-radius: 12px;
+  background: rgba(125, 125, 125, 0.12);
+}
+
+.fileIcon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: #ef3124;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.fileMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.fileName {
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.fileSize {
+  font-size: 13px;
+  opacity: 0.6;
+}
+
+.hint {
+  font-size: 14px;
+  opacity: 0.7;
+  line-height: 1.4;
+}
+
+.warning {
+  font-size: 14px;
+  line-height: 1.5;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: rgba(239, 49, 36, 0.08);
+  border: 1px solid rgba(239, 49, 36, 0.35);
+}
+
+.warning code {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 12px;
+  padding: 1px 4px;
+  border-radius: 4px;
+  background: rgba(125, 125, 125, 0.15);
+}
+
+.status {
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.statusError {
+  color: #ef3124;
+}

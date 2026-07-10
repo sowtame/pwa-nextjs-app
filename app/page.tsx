@@ -4,6 +4,7 @@ import Image from 'next/image'
 import styles from './page.module.css'
 // import { BottomSheet } from '@alfalab/core-components/bottom-sheet'
 import { SetupWorker } from '../components/setup-worker'
+import { PdfShare } from '../components/pdf-share'
 import Link from 'next/link'
 import { useEffect } from 'react'
 
@@ -59,6 +60,7 @@ export default function Home() {
           <Link className={styles.secondary} href={'/webapp'}>
             webapp:// launcher
           </Link>
+          <PdfShare />
         </div>
         {/* <BottomSheet hideOverlay={true} open={true} onClose={() => {}}>
           <div style={{ height: '430px' }}></div>

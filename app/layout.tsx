@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import localFont from 'next/font/local'
+import '@alfalab/core-components/vars/index.css'
 import './globals.css'
 import { PageRefresh } from '../components/refresh/page'
 
