@@ -3,6 +3,7 @@ import localFont from 'next/font/local'
 import '@alfalab/core-components/vars/index.css'
 import './globals.css'
 import { PageRefresh } from '../components/refresh/page'
+import { SetupWorker } from '../components/setup-worker'
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -47,6 +48,7 @@ export default function RootLayout({
         />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        <SetupWorker />
         <PageRefresh>{children}</PageRefresh>
       </body>
     </html>

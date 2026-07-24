@@ -3,27 +3,12 @@
 import Image from 'next/image'
 import styles from './page.module.css'
 // import { BottomSheet } from '@alfalab/core-components/bottom-sheet'
-import { SetupWorker } from '../components/setup-worker'
 import { PdfShare } from '../components/pdf-share'
 import Link from 'next/link'
-import { useEffect } from 'react'
 
 export default function Home() {
-  useEffect(() => {
-    // navigator.serviceWorker есть только в secure context (HTTPS или localhost);
-    // при открытии по LAN-адресу http://192.168.x.x он undefined
-    if (!('serviceWorker' in navigator)) {
-      console.log('Service Worker unavailable: not a secure context (open via HTTPS or localhost)')
-      return
-    }
-    navigator.serviceWorker
-      .register('/sw.js')
-      .then((registration) => console.log('Service Worker registration successful with scope: ', registration.scope))
-      .catch((err) => console.log('Service Worker registration failed: ', err))
-  }, [])
   return (
     <div className={styles.page}>
-      <SetupWorker />
       <div className={styles.navBar}>navbar</div>
       <main className={styles.main}>
         <Image className={styles.logo} src="/next.svg" alt="Next.js logo" width={180} height={38} priority />
